@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-md-12 text-center">
+            <label>TIMBRAR COMPROBANTE</label>
+            <div class="row">
+                <p>Usuario:</p>
+                <input type="text" class="form-control" id="UsuarioTimbrar">
+            </div>
+            <div class="row">
+                <p>Password:</p>
+                <input type="text" class="form-control" id="PasswordTimbrar">
+            </div>
+            <div class="row">
+                <p>Layout:</p>
+                <textarea rows="6" class="form-control" id="LayoutTimbrar"></textarea>
+            </div>
+            <div class="row">
+                <br />
+                <button type="button" class="btn btn-primary" id="btnTimbrar">Timbrar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-12 text-center">
+            <label>OBTENER PDF</label>
+            <div class="row">
+                <p>Usuario:</p>
+                <input type="text" class="form-control" id="UsuarioPDF">
+            </div>
+            <div class="row">
+                <p>Password:</p>
+                <input type="text" class="form-control" id="PasswordPDF">
+            </div>
+            <div class="row">
+                <p>UUID:</p>
+                <input type="text" class="form-control" id="UUIDPDF">
+            </div>
+            <div class="row">
+                <br />
+                <button type="button" class="btn btn-primary" id="btnPDF">Obtener</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-12 text-center">
+            <label>RESPUESTA</label>
+            <div class="row">
+                <br />
+                <textarea id="txtRespuesta" rows="16" class="form-control" readonly="readonly"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+
+        $("#btnTimbrar").click(function () {
+            $.ajax({
+                url: "/Home/TimbrarDocumento",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    Usuario: $("#UsuarioTimbrar").val(),
+                    Password: $("#PasswordTimbrar").val(),
+                    Layout: $("#LayoutTimbrar").val()
+                }),
+                success: function (response) {
+                    $("#txtRespuesta").val(JSON.stringify(response));
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
+        });
+
+        $("#btnPDF").click(function () {
+            $.ajax({
+                url: "/Home/ObtenerPDF",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    Usuario: $("#UsuarioPDF").val(),
+                    Password: $("#PasswordPDF").val(),
+                    UUID: $("#UUIDPDF").val()
+                }),
+                success: function (response) {
+                    $("#txtRespuesta").val(JSON.stringify(response));
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
+        });
+
+    </script>
+}
