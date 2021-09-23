@@ -8,6 +8,10 @@
         <div class="col-md-12 text-center">
             <label>TIMBRAR COMPROBANTE</label>
             <div class="row">
+                <p>Url:</p>
+                <input type="text" class="form-control" id="UrlServer">
+            </div>
+            <div class="row">
                 <p>Usuario:</p>
                 <input type="text" class="form-control" id="UsuarioTimbrar">
             </div>
@@ -28,6 +32,10 @@
     <div class="col-md-4">
         <div class="col-md-12 text-center">
             <label>OBTENER PDF</label>
+            <div class="row">
+                <p>Url:</p>
+                <input type="text" class="form-control" id="UrlServer">
+            </div>
             <div class="row">
                 <p>Usuario:</p>
                 <input type="text" class="form-control" id="UsuarioPDF">
@@ -66,6 +74,7 @@
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
+                    UrlServer: $("#UrlServer").val(),
                     Usuario: $("#UsuarioTimbrar").val(),
                     Password: $("#PasswordTimbrar").val(),
                     Layout: $("#LayoutTimbrar").val()
