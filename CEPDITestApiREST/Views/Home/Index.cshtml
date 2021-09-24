@@ -21,7 +21,7 @@
             </div>
             <div class="row">
                 <p>Layout:</p>
-                <textarea rows="6" class="form-control" id="LayoutTimbrar"></textarea>
+                <textarea rows="8" class="form-control" id="LayoutTimbrar"></textarea>
             </div>
             <div class="row">
                 <br />
@@ -30,6 +30,27 @@
         </div>
     </div>
     <div class="col-md-4">
+        <div class="col-md-12 text-center">
+            <label>Datos Encriptados</label>
+            <div class="row">
+                <p>Url:</p>
+                <input type="text" class="form-control" id="UrlServer">
+            </div>
+            <div class="row">
+                <p>Usuario:</p>
+                <input type="text" class="form-control" id="UsuarioEncriptado">
+            </div>
+            <div class="row">
+                <p>Password:</p>
+                <input type="text" class="form-control" id="PasswordEncriptado">
+            </div>
+            <div class="row">
+                <p>Layout:</p>
+                <textarea rows="8" class="form-control" id="LayoutEncriptado"></textarea>
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-4">
         <div class="col-md-12 text-center">
             <label>OBTENER PDF</label>
             <div class="row">
@@ -53,7 +74,7 @@
                 <button type="button" class="btn btn-primary" id="btnPDF">Obtener</button>
             </div>
         </div>
-    </div>
+    </div>*@
     <div class="col-md-4">
         <div class="col-md-12 text-center">
             <label>RESPUESTA</label>
@@ -81,6 +102,10 @@
                 }),
                 success: function (response) {
                     $("#txtRespuesta").val(JSON.stringify(response));
+
+                    $("#UsuarioEncriptado").val(response.UsuarioEncriptado);
+                    $("#PasswordEncriptado").val(response.PasswordEncriptado);
+                    $("#LayoutEncriptado").val(response.LayoutEncriptado);
                 },
                 error: function () {
                     alert("Error");

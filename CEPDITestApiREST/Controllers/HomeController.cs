@@ -50,7 +50,14 @@ namespace CEPDITestApiREST.Controllers
 
                 }
 
-                return Json(new { HttpStatusCode = response.StatusCode, Content = response.Content, xmlDesencriptado = xmlDesencriptado }, JsonRequestBehavior.AllowGet);
+                return Json(new { 
+                    HttpStatusCode = response.StatusCode, 
+                    Content = response.Content, 
+                    xmlDesencriptado = xmlDesencriptado,
+                    UsuarioEncriptado = clase.Usuario,
+                    PasswordEncriptado = clase.Password,
+                    LayoutEncriptado = clase.Lineas
+                }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex) 
             {
