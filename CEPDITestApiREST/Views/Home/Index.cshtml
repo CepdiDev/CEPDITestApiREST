@@ -91,7 +91,7 @@
 
         $("#btnTimbrar").click(function () {
             $.ajax({
-                url: "/Home/TimbrarDocumento",
+                url: "@Url.Action("TimbrarDocumento", "Home")",
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -115,7 +115,7 @@
 
         $("#btnPDF").click(function () {
             $.ajax({
-                url: "/Home/ObtenerPDF",
+                 url: "@Url.Action("ObtenerPDF", "Home")",
                 method: "POST",
                 contentType: "application/json",
                 data: JSON.stringify({
